@@ -14,29 +14,21 @@ exports.setup = function(options, seedLink) {
   seed = seedLink;
 };
 
-exports.up = function(db) {
-  return db.createTable('tasks', {
+exports.up = function (db, callback) {
+  const schema = {
     id: {
       type: 'int',
       primaryKey: true,
-      notNull: true,
       autoIncrement: true
     },
-    name: {
-      type: 'string',
-      notNull: true,
-      length: 255
-    },
-    createdAt: {
-      type: 'timestamp',
-      notNull: true,
-      defaultValue: new String('CURRENT_TIMESTAMP')
-    }
-  });
+    title: 'string',
+    completed: 'boolean'
+  };
+  db.createTable('todos', schema, callback);
 };
 
-exports.down = function(db) {
-  return db.dropTable('tasks');
+exports.down = function (db, callback) {
+  db.dropTable('todos', callback);
 };
 
 exports._meta = {

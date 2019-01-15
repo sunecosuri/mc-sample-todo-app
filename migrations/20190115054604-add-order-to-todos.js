@@ -14,12 +14,12 @@ exports.setup = function(options, seedLink) {
   seed = seedLink;
 };
 
-exports.up = function (db) {
-  return db.insert('tasks', ['name'], ['sample'], () => { });
+exports.up = function (db, callback) {
+  db.addColumn('todos', 'order', { type: 'int' }, callback);
 };
 
-exports.down = function(db) {
-  return db.delete();
+exports.down = function (db, callback) {
+  db.removeColumn('todos', 'order', callback);
 };
 
 exports._meta = {
