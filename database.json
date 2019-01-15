@@ -1,0 +1,25 @@
+{
+  "init": {
+    "driver": "mysql",
+    "user": "root",
+    "password": ""
+  },
+  "dev": {
+    "driver": "mysql",
+    "user": "root",
+    "password": "",
+    "database": "mc_development"
+  },
+  "prod": {
+    "host": {
+      "ENV": "DB_HOST"
+    },
+    "driver": "mysql",
+    "database": {
+      "ENV": "DB_DATABASE"
+    },
+    "user": {
+      "ENV": "DB_USER"
+    }
+  }
+}
