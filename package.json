@@ -1,0 +1,14 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "Express and MySQL",
+  "author": "sunecosuri",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "db-migrate": "^0.11.5",
+    "db-migrate-mysql": "^1.1.10",
+    "express": "^4.13.3",
+    "mysql": "^2.9.0"
+  }
+}
