@@ -16,7 +16,8 @@ app.use(function (req, res, next) {
 
 connection.init();
 routes.configure(app);
-
-const server = app.listen(8000, () => {
-  console.log('Server listening on port ' + server.address().port);
+const port = process.env.port || 8000
+const host = process.env.host || '127.0.0.1'
+const server = app.listen(port, host, () => {
+  console.log('Server listening on port ' + port);
 });
