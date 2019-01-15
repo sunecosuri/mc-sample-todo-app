@@ -1,21 +1,29 @@
-var todo = require('./models/todo');
+const task = require('./models/task');
 
 module.exports = {
-  configure: function(app) {
-    app.get('/todo/', function(req, res) {
-      todo.get(res);
+  configure: (app) => {
+    app.get('/tasks', function (req, res) {
+      task.getAll(res);
     });
 
-    app.post('/todo/', function(req, res) {
-      todo.create(req.body, res);
+    app.get('/tasks/:id', function (req, res) {
+      const id = req.params.id || null;
+      if (!id) {
+        res.sendStatus(400)
+      }
+      task.get(id, res);
     });
 
-    app.put('/todo/', function(req, res) {
-      todo.update(req.body, res);
+    app.post('/tasks', function(req, res) {
+      task.create(req.body, res);
     });
 
-    app.delete('/todo/:id/', function(req, res) {
-      todo.delete(req.params.id, res);
+    app.put('/tasks', function(req, res) {
+      task.update(req.body, res);
+    });
+
+    app.delete('/tasks/:id', function(req, res) {
+      task.delete(req.params.id, res);
     });
   }
 };
