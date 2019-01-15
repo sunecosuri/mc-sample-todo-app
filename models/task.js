@@ -3,7 +3,7 @@ var connection = require('../connection');
 function Task() {
   this.getAll = function(res) {
     connection.acquire(function (err, con) {
-      con.query('SELECT * FROM tasks', function (err, result) {
+      con.query('SELECT * FROM todos', function (err, result) {
         con.release();
         res.send(result);
       });
@@ -12,7 +12,7 @@ function Task() {
 
   this.get = function(id, res) {
     connection.acquire(function (err, con) {
-      con.query('SELECT * FROM tasks WHERE id = $1', [id], function (err, result) {
+      con.query('SELECT * FROM todos WHERE id = $1', [id], function (err, result) {
         con.release();
         res.send(result);
       });
@@ -34,7 +34,7 @@ function Task() {
 
   this.update = function(task, res) {
     connection.acquire(function(err, con) {
-      con.query('UPDATE tasks SET $1 WHERE ID = $2', [task, task.id], function(err, result) {
+      con.query('UPDATE todos SET $1 WHERE ID = $2', [task, task.id], function(err, result) {
         con.release();
         if (err) {
           res.send({status: 1, message: 'Task update failed'});
@@ -47,7 +47,7 @@ function Task() {
 
   this.delete = function(id, res) {
     connection.acquire(function(err, con) {
-      con.query('DELTE FROM tasks WHERE id = $1', [id], function(err, result) {
+      con.query('DELTE FROM todos WHERE id = $1', [id], function(err, result) {
         con.release();
         if (err) {
           res.send({status: 1, message: 'Failed to delete'});
