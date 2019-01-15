@@ -11,15 +11,18 @@
     "database": "mc_development"
   },
   "prod": {
+    "driver": "mysql",
     "host": {
       "ENV": "DB_HOST"
     },
-    "driver": "mysql",
     "database": {
       "ENV": "DB_DATABASE"
     },
     "user": {
       "ENV": "DB_USER"
+    },
+    "password": {
+      "ENV": "DB_PASSWORD"
     }
   }
 }
